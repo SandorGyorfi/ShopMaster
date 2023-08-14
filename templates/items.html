@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShopMaster</title>
+</head>
+<body>
+    {% for items in items %}
+    {{ items.item_name}}<br>
+    {{ items.category_name}}<br>
+    {{ items.comment}}<br>
+    {{ items.is_urgent}}<br>
+    {{ items.due_date}}<br>
+    {% endfor %}
+</body>
+</html>

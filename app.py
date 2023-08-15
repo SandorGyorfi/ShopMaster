@@ -20,15 +20,40 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
+
+
+
+
 @app.route("/get_items")
 def get_items():
     items = mongo.db.items.find()
     return render_template("items.html", items=items)
 
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
+    if request.method == "POST":
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username")})
+
+        if existing_user:
+            flash("Username already exists", "error")
+            return redirect(url_for("register"))
+
+        register = {
+            "username": request.form.get("username"),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
+
+        session["user"] = request.form.get("username")
+        flash("Registration Successful!", "success")
+
     return render_template("register.html")
+
+
+
 
 
 if __name__ == "__main__":

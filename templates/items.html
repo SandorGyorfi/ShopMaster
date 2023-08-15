@@ -1,11 +1,12 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% block content %}
-    {% for items in items %}
-    {{ items.item_name}}<br>
-    {{ items.category_name}}<br>
-    {{ items.comment}}<br>
-    {{ items.is_urgent}}<br>
-    {{ items.due_date}}<br>
+
+    {% for item in items %}
+        {{ item.item_name }}<br>
+        {{ item.category_name }}<br>
+        {{ item.comment }}<br>
+        {{ item.is_urgent }}<br>
+        {{ item.due_date }}<br>
     {% endfor %}
 
-{% endblock %}    
+{% endblock %}

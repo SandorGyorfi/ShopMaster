@@ -5,15 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">    {% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">    
+    {% block styles %}
     {% endblock %}
     <title>ShopMaster</title>
 </head>
 <body>
     <header>
-        <nav class="nav-extended lime accent-4">
+        <nav class="nav-extended lime darken-2">
             <div class="nav-wrapper">
-              <a href="{{ url_for('get_items') }}" class="brand-logo">ShopMaster</a>
+              <a href="{{ url_for('get_items') }}" class="brand-logo"><i class="material-icons prefix light-white-text text-lime  darken-2">local_mall</i>ShopMaster</a>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('get_items') }}">Home</a></li>
@@ -22,21 +23,21 @@
                 <li><a href="#">Manage Categories</a></li>
                 <li><a href="#">Log In</a></li>
                 <li><a href="#">Log Out</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
                 
               </ul>
             </div>
           </nav>
         <!--mobile-->
           <ul class="sidenav" id="mobile-demo">
-            <li><h4 class="center-align white-text lime accent-4">ShopMaster</h4></li>
+            <li><h4 class="center-align white-text lime darken-2">ShopMaster</h4></li>
                 <li><a href="{{ url_for('get_items') }}">Home</a></li>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">New List</a></li>
                 <li><a href="#">Manage Categories</a></li>
                 <li><a href="#">Log In</a></li>
                 <li><a href="#">Log Out</a></li>
-                <li><a href="#">Register</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
           </ul>
                 
     </header>

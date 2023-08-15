@@ -10,6 +10,36 @@
     <title>ShopMaster</title>
 </head>
 <body>
+    <header>
+        <nav class="nav-extended lime accent-4">
+            <div class="nav-wrapper">
+              <a href="{{ url_for('get_items') }}" class="brand-logo">ShopMaster</a>
+              <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="material-icons">menu</i></a>
+              <ul class="right hide-on-med-and-down">
+                <li><a href="{{ url_for('get_items') }}">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">New List</a></li>
+                <li><a href="#">Manage Categories</a></li>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Log Out</a></li>
+                <li><a href="#">Register</a></li>
+                
+              </ul>
+            </div>
+          </nav>
+        <!--mobile-->
+          <ul class="sidenav" id="mobile-demo">
+            <li><h4 class="center-align white-text lime accent-4">ShopMaster</h4></li>
+                <li><a href="{{ url_for('get_items') }}">Home</a></li>
+                <li><a href="#">Profile</a></li>
+                <li><a href="#">New List</a></li>
+                <li><a href="#">Manage Categories</a></li>
+                <li><a href="#">Log In</a></li>
+                <li><a href="#">Log Out</a></li>
+                <li><a href="#">Register</a></li>
+          </ul>
+                
+    </header>
     {% block content %}
     {% endblock %}
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>

@@ -1,12 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
 
-    {% for item in items %}
-        {{ item.item_name }}<br>
-        {{ item.category_name }}<br>
-        {{ item.comment }}<br>
-        {{ item.is_urgent }}<br>
-        {{ item.due_date }}<br>
-    {% endfor %}
-
+    <ul class="collapsible">
+        {% for item in items %}
+        <li>
+            <div class="collapsible-header center-align white-text lime darken-2">
+                <i class="material-icons prefix white-text text-lime  darken-2">arrow_circle_down</i>
+                <strong>{{ item.item_name }}</strong> : {{ item.due_date }}
+                {% if item.is_urgent == "on" %}
+                <i class="material-icons prefix white-text text-lime  darken-2 tooltipped"
+                 data-position="bottom" data-tooltip="URGENT"
+                >notification_importatnt</i>
+                {% endif %}
+            </div>
+            <div class="collapsible-body">
+                <strong>{{ item.category_name }}</strong>
+                <p>{{ item.comment }}</p>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>  
 {% endblock %}

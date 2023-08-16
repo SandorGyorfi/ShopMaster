@@ -8,12 +8,17 @@
 			<div class="row">
 				<div class="input-field col s12">
                     <i class="fas fa-folder-open prefix lime-text lime darken-2"></i>
-					<select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Choose Category</option>
+                    <select id="category_name" name="category_name" class="validate" required>
+                        <option value="" disabled>Choose Category</option>
                         {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% if category.category_name == item.category_name %}
+                                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                            {% else %}
+                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
+                    
 					<label for="category_name">Item Category</label>
 				</div>
 			</div>
@@ -21,7 +26,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix lime-text lime darken-2"></i>
                     <input id="item_name" name="item_name" minlength="5" maxlength="50"
-                        type="text" class="validate" required>
+                      value="{{ item.item_name }}"  type="text" class="validate" required>
                     <label for="item_name">Item Name</label>
                 </div>
             </div>
@@ -29,14 +34,16 @@
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix lime-text lime darken-2"></i>
                     <textarea id="comment" name="comment" minlength="5"
-                        maxlength="200" class="materialize-textarea validate" required></textarea>
+                        maxlength="200" class="materialize-textarea validate" required>
+                        {{- item.comment -}}</textarea>
                     <label for="comment">Comment</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix lime-text lime darken-2"></i>
-                    <input id="due_date" name="due_date" type="text" class="datepicker validate" required>
+                    <input id="due_date" name="due_date" type="text" 
+                    value="{{ item.due_date }}" class="datepicker validate" required>
                     <label for="due_date">Due Date</label>
                 </div>
             </div>
@@ -45,7 +52,11 @@
 					<div class="switch">
                         <i class="fas fa-exclamation-circle prefix lime-text lime darken-2"></i>
 						<label for="is_urgent">
+                            {% if item.is_urgent == "on" %}
+                            <input type="checkbox" id="is_urgent" name="is_urgent" checked>
+                            {% else %}
                             <input type="checkbox" id="is_urgent" name="is_urgent">
+                            {% endif %}
                             <span class="lever"></span>
                             Is Urgent
                         </label>

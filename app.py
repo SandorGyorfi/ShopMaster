@@ -1,8 +1,7 @@
 import os
 
 from bson.objectid import ObjectId
-from flask import (Flask, flash, redirect, render_template, request, session,
-                   url_for)
+from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -21,14 +20,15 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-
-
+def index():
+    return redirect(url_for("get_items"))
 
 
 @app.route("/get_items")
 def get_items():
     items = list(mongo.db.item.find())
     return render_template("items.html", items=items)
+
 
 
 
@@ -53,6 +53,7 @@ def register():
         flash("Registration Successful!", "success")
 
     return render_template("register.html")
+
 
 
 
@@ -121,7 +122,7 @@ def add_item():
 
 @app.route("/edit_item/<item_id>", methods=["GET", "POST"])
 def edit_item(item_id):
-    item = mongo.db.items.find_one({"_id": ObjectId(item_id)})
+    item = mongo.db.item.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_item.html", item=item, categories=categories)
 

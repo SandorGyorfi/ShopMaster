@@ -18,4 +18,16 @@ body{
     background-color: rgb(255, 255, 232);
 }
 
+.flashes h4 {
+    line-height: 2;
+}
 
+.btn-small {
+    margin: 4px;
+    border-radius: 3%;
+}
+
+.collapsible-header .col strong {
+    margin: 4px;
+    line-height: 35px;
+}

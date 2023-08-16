@@ -1,0 +1,21 @@
+.new-wrapper{
+    border-radius: 3%;
+}
+
+.card-panel{
+    border-radius: 3%;
+    background-color: rgb(255, 255, 232)
+}
+
+.collapsible,
+.collapsible-body,
+.collapsible-header
+{
+    border-radius: 3%;
+}
+
+body{
+    background-color: rgb(255, 255, 232);
+}
+
+

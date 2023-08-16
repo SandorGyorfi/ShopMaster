@@ -1,10 +1,11 @@
 import os
-from flask import (
-    Flask, flash, render_template,
-    redirect, request, session, url_for)
-from flask_pymongo import PyMongo
+
 from bson.objectid import ObjectId
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import (Flask, flash, redirect, render_template, request, session,
+                   url_for)
+from flask_pymongo import PyMongo
+from werkzeug.security import check_password_hash, generate_password_hash
+
 if os.path.exists("env.py"):
     import env
 
@@ -26,7 +27,7 @@ mongo = PyMongo(app)
 
 @app.route("/get_items")
 def get_items():
-    items = list(mongo.db.items.find())
+    items = list(mongo.db.item.find())
     return render_template("items.html", items=items)
 
 
@@ -35,7 +36,8 @@ def get_items():
 def register():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username")})
+            {"username": request.form.get("username")}
+        )
 
         if existing_user:
             flash("Username already exists", "error")
@@ -43,7 +45,7 @@ def register():
 
         register = {
             "username": request.form.get("username"),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
         }
         mongo.db.users.insert_one(register)
 
@@ -58,13 +60,15 @@ def register():
 def login():
     if request.method == "POST":
         existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username")})
+            {"username": request.form.get("username")}
+        )
 
         if existing_user:
             if check_password_hash(
-                existing_user["password"], request.form.get("password")):
-                    session["user"] = request.form.get("username")
-                    flash("Welcome, {}".format(request.form.get("username")))
+                existing_user["password"], request.form.get("password")
+            ):
+                session["user"] = request.form.get("username")
+                flash("Welcome, {}".format(request.form.get("username")))
             else:
                 flash("Invalid login details")
                 return redirect(url_for("login"))
@@ -80,11 +84,10 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    
+    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+
     if session["user"]:
-     return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username)
     return redirect(url_for("login"))
 
 
@@ -97,7 +100,24 @@ def logout():
 
 
 
+@app.route("/add_item", methods=["GET", "POST"])
+def add_item():
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        item = {
+            "category_name": request.form.get("category_name"),
+            "item_name": request.form.get("item_name"),
+            "comment": request.form.get("comment"),
+            "is_urgent": is_urgent,
+            "due_date": request.form.get("due_date"),
+            "created_by": session["user"],
+        }
+        mongo.db.item.insert_one(item)
+        flash("Item added successfully!", "success")
+        return redirect(url_for("get_items"))
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_item.html", categories=categories)
+
+
 if __name__ == "__main__":
-    app.run(host=os.environ.get("IP"),
-            port=int(os.environ.get("PORT")),
-            debug=True)
+    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)

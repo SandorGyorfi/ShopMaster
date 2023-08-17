@@ -9,9 +9,10 @@
             <div class="collapsible-header center-align white-text lime darken-2">
                 <i class="material-icons prefix white-text text-lime  darken-2">arrow_circle_down</i>
                 <div class="col s2">
-                    <a href="" class="btn-small white-text orange darken-3">Done</a>
+                    {% if session.user|lower == item.created_by|lower %}
+                    <a href="{{url_for('delete_item', item_id=item._id) }}" class="btn-small white-text orange darken-3">Done</a>
                     <a href="{{url_for('edit_item', item_id=item._id) }}" class="btn-small white-text yellow darken-2">Edit</a>
-                    
+                    {% endif %}
                 </div>
                 <div class="col s6">
                     <strong>{{ item.item_name }}</strong> : {{ item.due_date }}

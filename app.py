@@ -122,10 +122,30 @@ def add_item():
 
 @app.route("/edit_item/<item_id>", methods=["GET", "POST"])
 def edit_item(item_id):
+    if request.method == "POST":
+        is_urgent = "on" if request.form.get("is_urgent") else "off"
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "item_name": request.form.get("item_name"),
+            "comment": request.form.get("comment"),
+            "is_urgent": is_urgent,
+            "due_date": request.form.get("due_date"),
+            "created_by": session["user"],
+        }
+        mongo.db.item.update({"_id":ObjectId(item_id)}, submit)
+        flash("Item updated successfully!", "success")
+        
+    
     item = mongo.db.item.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_item.html", item=item, categories=categories)
 
+
+@app.route("/delete_item/<item_id>", methods=["GET", "POST"])
+def delete_item(item_id):
+    mongo.db.item.remove({"_id": ObjectId(item_id)})
+    flash("Item deleted successfully!", "success")
+    return redirect(url_for("get_items"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)

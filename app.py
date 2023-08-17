@@ -29,6 +29,13 @@ def get_items():
     return render_template("items.html", items=items)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    item = list(mongo.db.item.find({"$text": {"$search": query}}))
+    return render_template("items.html", items=item)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -172,7 +179,6 @@ def delete_category(category_id):
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category deleted successfully!")
     return redirect(url_for("get_categories"))
-
 
 
 if __name__ == "__main__":

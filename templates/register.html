@@ -1,44 +1,96 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
-    <h3 class="center-align">Registration Form</h3>
+<h3 class="center-align">Registration Form</h3>
 
-    <div class="row">
-        <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('register') }}">
-            <div class="card-panel">
-                <!-- username -->
-                <div class="row">
-					<div class="input-field col s12">
-                        <i class="material-icons prefix light-green-text text-lime  darken-2">person_add</i>
-						<input id="username" name="username" type="text" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-						<label for="username">Username</label>
-					</div>
-                </div>
-                <!-- passowrd -->
-                <div class="row">
-                    <div class="input-field col s12">
-						<i class="material-icons prefix light-green-text text-lime  darken-2">key</i>
-                        <input id="password" name="password" type="password" minlength="5"
-                            maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                        <label for="password">Password</label>
-                    </div>
-                </div>
-                <!-- register -->
-                <div class="row">
-                    <button type="submit" class="col s12 btn-large light-green text-lime darken-2">
-                        Register <i class="material-icons prefix white-text">app_registration</i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="row">
-        <div class="col s12">
-            <p class="center-align">
-                Already Registered?
-                <a href="{{ url_for('login') }}"  class="light-green text-lime darken-2">Log In</a>
-            </p>
+<div class="row">
+  <form
+    class="col s12 m8 offset-m2"
+    method="POST"
+    action="{{ url_for('register') }}"
+  >
+    <div class="card-panel">
+      <!-- username -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix light-green-text text-lime darken-2"
+            >person_add</i>
+          <input
+            id="username"
+            name="username"
+            type="text"
+            minlength="5"
+            maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$"
+            class="validate"
+            required
+          />
+          <label for="username">Username</label>
         </div>
+      </div>
+      <!-- email -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix light-green-text text-lime darken-2">email</i>
+          <input
+            id="email"
+            name="email"
+            type="email"
+            class="validate"
+            required
+          />
+          <label for="email">Email Address</label>
+        </div>
+      </div>
+      <!-- passowrd -->
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix light-green-text text-lime darken-2">key</i>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            minlength="5"
+            maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$"
+            class="validate"
+            required
+          />
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <i class="material-icons prefix light-green-text text-lime darken-2">vpn_key</i>
+          <input
+            id="confirm_password"
+            name="confirm_password"
+            type="password"
+            minlength="5"
+            maxlength="15"
+            pattern="^[a-zA-Z0-9]{5,15}$"
+            class="validate"
+            required
+          />
+          <label for="confirm_password">Confirm Password</label>
+        </div>
+      </div>
+      <!-- register -->
+      <div class="row">
+        <button type="submit"
+          class="col s12 btn-large light-green text-lime darken-2">
+          Register
+          <i class="material-icons prefix white-text">app_registration</i>
+        </button>
+      </div>
     </div>
+  </form>
+</div>
+<div class="row">
+  <div class="col s12">
+    <p class="center-align">
+      Already Registered?
+      <a href="{{ url_for('login') }}" class="light-green text-lime darken-2">Log In</a>
+    </p>
+  </div>
+</div>
 {% endblock %}

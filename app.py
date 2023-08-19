@@ -1,9 +1,14 @@
 import os
+from decouple import config
 
 from bson.objectid import ObjectId
 from flask import Flask, flash, redirect, render_template, request, session, url_for
 from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_mail import Mail, Message
+from datetime import datetime
+from env import PHONE_NUMBER
+
 
 if os.path.exists("env.py"):
     import env
@@ -20,7 +25,12 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return redirect(url_for("get_items"))
+    return redirect(url_for("main_page"))
+
+
+@app.route("/main_page")
+def main_page():
+    return render_template("main_page.html")
 
 
 @app.route("/get_items")
@@ -34,9 +44,14 @@ def get_items():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    if not session.get("user"):
+        return redirect(url_for("login"))
+
     query = request.form.get("query")
-    item = list(mongo.db.item.find({"$text": {"$search": query}}))
-    return render_template("items.html", items=item)
+    user_items = list(
+        mongo.db.item.find({"created_by": session["user"], "$text": {"$search": query}})
+    )
+    return render_template("items.html", items=user_items)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -352,18 +367,19 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
-@app.route("/contact_developer")
+@app.route("/contact_developer", methods=["GET", "POST"])
 def contact_developer():
-    """
-    Render the contact developer page.
+    if request.method == "POST":
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
 
-    This function renders the contact developer page, where users can reach out for support or inquiries.
+        whatsapp_number = PHONE_NUMBER
+        click_to_chat_link = f"https://wa.me/{whatsapp_number}?text=Name%3A%20{name}%0AEmail%3A%20{email}%0AMessage%3A%20{message}"
 
-    Returns:
-        Rendered template: Renders the "contact_developer.html" template.
-    """
+        return redirect(click_to_chat_link)
     return render_template("contact_developer.html", username=session["user"])
-    return redirect(url_for("login"))
+
 
 
 @app.route("/handle_profile_action", methods=["POST"])

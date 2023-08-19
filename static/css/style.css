@@ -1,33 +1,79 @@
-.new-wrapper{
-    border-radius: 3%;
+.new-wrapper {
+  border-radius: 3%;
 }
 
-.card-panel{
-    border-radius: 3%;
-    background-color: rgb(255, 255, 232)
+.card-panel {
+  border-radius: 3%;
+  background-color: rgb(255, 255, 232);
 }
+
+.card {
+  text-align: center;
+}
+
+.dropdown-content li > a, .dropdown-content li > span {
+    font-size: 16px;
+    color: #827717;
+    display: block;
+    line-height: 22px;
+    padding: 14px 16px;
+  }
+  
+  .select-wrapper input.select-dropdown {
+    color: #827717;
+
+  }  
 
 .collapsible,
 .collapsible-body,
-.collapsible-header
-{
-    border-radius: 3%;
+.collapsible-header {
+  border-radius: 3%;
 }
 
-body{
-    background-color: rgb(255, 255, 232);
+body {
+  background-color: rgb(255, 255, 232);
 }
 
-.flashes h4 {
-    line-height: 2;
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-.btn-small {
-    margin: 4px;
-    border-radius: 3%;
+main {
+  flex: 1 0 auto;
+}
+
+.page-footer {
+  color: #fff;
+  background-color: #afb42b; 
+}
+
+.footer-copyright
+.sidenav li{
+    padding: 2%;
+    color: #827717;
+}
+
+.flashes h1,
+h2,
+h3,
+h4 {
+  line-height: 2;
+  margin-top: 0;
+}
+.btn-large,
+.btn-small,
+.btn {
+  margin: 4px;
+  border-radius: 3%;
 }
 
 .collapsible-header .col strong {
-    margin: 4px;
-    line-height: 35px;
+  margin: 4px;
+  line-height: 35px;
+}
+
+html{
+  color: #827717;
 }

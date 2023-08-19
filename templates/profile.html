@@ -1,44 +1,37 @@
 {% extends "base.html" %} {% block content %}
 
-<div class="row">
+<div class="row lime-text text-darken-4"">
   <div class="col s12 m8 offset-m2">
     <div class="card-panel">
-      <h3 class="center-align lime-text darken-2">{{ username }}'s Profile</h3>
+      <h3 class="center-align lime-text text-darken-2">{{ username }}'s Profile</h3>
 
-      <div class="divider"></div>
-      <div class="section">
+      <div class="divider""></div>
+      <div class="section lime-text text-darken-4">
         <h5>User Information</h5>
         <br />
         <p>Username: {{ username }}</p>
         <br />
       </div>
-      <form id="profile-action-form"
+      <form id="profile-action-form" class="lime-text text-darken-4"
         action="{{ url_for('handle_profile_action') }}"
         method="POST">
-        <div class="center-align input-field">
+        <div class="center-align input-field lime-text darken-2">
           <select id="profile-action-select" name="profile_action">
+            <label class="lime-text text-darken-4"">Select an Action</label>
             <option value="" disabled selected>Choose an option</option>
-            <option value="{{ url_for('delete_account_confirm') }}">
-              Delete Account
-            </option>
-            <option value="{{ url_for('renew_username') }}">
-              Renew Username
-            </option>
-            <option value="{{ url_for('change_password') }}">
-              Change Password
-            </option>
+            <option value="{{ url_for('delete_account_confirm') }}">Delete Account</option>
+            <option value="{{ url_for('renew_username') }}">Renew Username</option>
+            <option value="{{ url_for('change_password') }}">Change Password</option>
             <option value="{{ url_for('change_email') }}">Change Email</option>
             <option value="{{ url_for('add_item') }}">Start New List</option>
-            <option value="{{ url_for('contact_developer') }}">
-              Contact Developer
-            </option>
+            <option value="{{ url_for('contact_developer') }}"> Contact Developer</option>
           </select>
-          <label>Select an Action</label>
+          
         </div>
 
         <!-- Submit Button -->
         <div class="center-align">
-          <button class="btn white-text teal darken-2" type="submit">
+          <button class="btn white-text lime darken-2" type="submit">
             Submit
           </button>
         </div>

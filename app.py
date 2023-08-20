@@ -1,11 +1,10 @@
 import os
 from decouple import config
-
 from bson.objectid import ObjectId
 from flask import Flask, flash, redirect, render_template, request, session, url_for
-
 from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_mail import Mail, Message
 from datetime import datetime
 
 if os.path.exists("env.py"):

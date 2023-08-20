@@ -12,16 +12,16 @@
 <div class="row">
   {% for category in categories %}
   <div class="col s12 m3">
-    <div class="card center-align white-text lime darken-2">
+    <div class="card center-align prefix white-text lime darken-2">
       <div class="card-content white-text">
         <span class="card-title">{{ category.category_name }}</span>
       </div>
       <div class="card-action">
         <a href="{{ url_for('edit_category', category_id=category._id) }}"
-          class="btn-small white-text orange darken-3"
+          class="btn-small prefix white-text orange darken-3"
           >Edit</a >
         <a href="{{ url_for('delete_category', category_id=category._id) }}"
-          class="btn-small white-text yellow darken-2"
+          class="btn-small prefix white-text yellow darken-2"
           >Delete</a>
       </div>
     </div>

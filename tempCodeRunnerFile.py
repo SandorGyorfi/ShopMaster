@@ -3,13 +3,17 @@ from decouple import config
 
 from bson.objectid import ObjectId
 from flask import Flask, flash, redirect, render_template, request, session, url_for
-
 from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_mail import Mail, Message
 from datetime import datetime
+
+
+
 
 if os.path.exists("env.py"):
     import env
+
 
 app = Flask(__name__)
 
@@ -45,8 +49,9 @@ def search():
         return redirect(url_for("login"))
 
     query = request.form.get("query")
-    user_items = list(mongo.db.item.find(
-        {"created_by": session["user"], "$text": {"$search": query}}))
+    user_items = list(
+        mongo.db.item.find({"created_by": session["user"], "$text": {"$search": query}})
+    )
     return render_template("items.html", items=user_items)
 
 
@@ -77,7 +82,7 @@ def register():
 
         session["user"] = request.form.get("username")
         flash("Registration Successful!", "success")
-        return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("profile", username=session["user"]))  
 
     return render_template("register.html")
 
@@ -95,9 +100,7 @@ def login():
             ):
                 session["user"] = request.form.get("username")
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(
-                    url_for("profile", username=session["user"])
-                )  # Redirect to profile
+                return redirect(url_for("profile", username=session["user"]))  # Redirect to profile
             else:
                 flash("Invalid login details")
                 return redirect(url_for("login"))
@@ -126,8 +129,9 @@ def change_email():
 
             user = mongo.db.users.find_one({"username": session["user"]})
             if user and check_password_hash(user["password"], password):
-                mongo.db.users.update_one({"username": session["user"]}, {
-                    "$set": {"email": new_email}})
+                mongo.db.users.update_one(
+                    {"username": session["user"]}, {"$set": {"email": new_email}}
+                )
                 flash("Email address changed successfully!", "success")
                 return redirect(url_for("profile", username=session["user"]))
             else:
@@ -146,9 +150,7 @@ def renew_username():
     This function allows a user to renew their username.
 
     Returns:
-        Redirect: Redirects to the user's
-
-           profile page with the updated username.
+        Redirect: Redirects to the user's profile page with the updated username.
     """
     if session.get("user"):
         if request.method == "POST":
@@ -159,8 +161,9 @@ def renew_username():
                 flash("Username already exists", "error")
                 return redirect(url_for("renew_username"))
 
-            mongo.db.users.update_one({"username": session["user"]}, {
-                "$set": {"username": new_username}})
+            mongo.db.users.update_one(
+                {"username": session["user"]}, {"$set": {"username": new_username}}
+            )
             session["user"] = new_username
             flash("Username renewed successfully!", "success")
             return redirect(url_for("profile", username=new_username))
@@ -178,8 +181,7 @@ def change_password():
             confirm_password = request.form.get("confirm_password")
 
             user = mongo.db.users.find_one({"username": session["user"]})
-            if user and check_password_hash(
-                    user["password"], current_password):
+            if user and check_password_hash(user["password"], current_password):
                 if new_password == confirm_password:
                     new_password_hash = generate_password_hash(new_password)
                     mongo.db.users.update_one(
@@ -187,18 +189,22 @@ def change_password():
                         {"$set": {"password": new_password_hash}},
                     )
                     flash("Password changed successfully!", "success")
-                    return redirect(
-                        url_for(
-                            "profile",
-                            username=session["user"]))
+                    return redirect(url_for("profile", username=session["user"]))
                 else:
                     flash("Passwords do not match", "error")
             else:
                 flash("Invalid password", "error")
 
-        return render_template(
-            "change_password.html",
-            username=session["user"])
+        return render_template("change_password.html", username=session["user"])
+    return redirect(url_for("login"))
+
+
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("profile.html", username=username)
     return redirect(url_for("login"))
 
 
@@ -233,9 +239,7 @@ def add_item():
     This function allows a user to add a new item to their list.
 
     Returns:
-        Redirect: Redirects to the user's list
-
-           of items after adding a new item.
+        Redirect: Redirects to the user's list of items after adding a new item.
     """
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
@@ -250,10 +254,10 @@ def add_item():
         mongo.db.item.insert_one(item)
         flash("Item added successfully!", "success")
         return redirect(url_for("get_items"))
-
+    
     categories = mongo.db.categories.find().sort("category_name", 1)
+    
     return render_template("add_item.html", categories=categories)
-
 
 @app.route("/edit_item/<item_id>", methods=["GET", "POST"])
 def edit_item(item_id):
@@ -266,9 +270,7 @@ def edit_item(item_id):
         item_id (str): The ID of the item to be edited.
 
     Returns:
-        Redirect: Redirects to the user's list
-
-           of items after editing an item.
+        Redirect: Redirects to the user's list of items after editing an item.
     """
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
@@ -282,11 +284,13 @@ def edit_item(item_id):
         }
         mongo.db.item.update({"_id": ObjectId(item_id)}, submit)
         flash("Item updated successfully!", "success")
-        return redirect(url_for("get_items"))
+        return redirect(url_for('get_items')) 
 
     item = mongo.db.item.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_item.html", item=item, categories=categories)
+
+
 
 
 @app.route("/delete_item/<item_id>", methods=["GET", "POST"])
@@ -301,14 +305,10 @@ def get_categories():
     """
     Retrieve and render a list of categories.
 
-    This function retrieves a list of categories
-
-      from the database and renders them on the categories page.
+    This function retrieves a list of categories from the database and renders them on the categories page.
 
     Returns:
-        Rendered template: Renders the "categories.html"
-
-        template with the list of categories.
+        Rendered template: Renders the "categories.html" template with the list of categories.
     """
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
@@ -322,9 +322,7 @@ def add_category():
     This function allows users to add a new category to the database.
 
     Returns:
-        Redirect: Redirects to the "get_categories"
-
-        route after adding a category.
+        Redirect: Redirects to the "get_categories" route after adding a category.
     """
     if request.method == "POST":
         category = {"category_name": request.form.get("category_name")}
@@ -340,17 +338,13 @@ def edit_category(category_id):
     """
     Handle the editing of a category.
 
-    This function allows users to edit
-
-    the name of an existing category in the database.
+    This function allows users to edit the name of an existing category in the database.
 
     Args:
         category_id (str): The ID of the category to be edited.
 
     Returns:
-        Redirect: Redirects to the "get_categories"
-
-           route after editing a category.
+        Redirect: Redirects to the "get_categories" route after editing a category.
     """
     if request.method == "POST":
         submit = {"category_name": request.form.get("category_name")}
@@ -373,13 +367,13 @@ def delete_category(category_id):
         category_id (str): The ID of the category to be deleted.
 
     Returns:
-        Redirect: Redirects to the categories page
-
-           after deleting the category.
+        Redirect: Redirects to the categories page after deleting the category.
     """
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category deleted successfully!")
     return redirect(url_for("get_categories"))
+
+
 
 
 @app.route("/contact_developer", methods=["GET", "POST"])
@@ -389,13 +383,13 @@ def contact_developer():
         email = request.form.get("email")
         message = request.form.get("message")
 
-        whatsapp_number = "+447563713196"
-        click_to_chat_link = (
-            f"https://wa.me/{whatsapp_number}?text=Name%3A%20{name}%0A"
-            f"Email%3A%20{email}%0AMessage%3A%20{message}"
-        )
+        whatsapp_number = "+447563713196"  
+        click_to_chat_link = f"https://wa.me/{whatsapp_number}?text=Name%3A%20{name}%0AEmail%3A%20{email}%0AMessage%3A%20{message}"
+
         return redirect(click_to_chat_link)
     return render_template("contact_developer.html", username=session["user"])
+
+
 
 
 @app.route("/handle_profile_action", methods=["POST"])
@@ -403,8 +397,7 @@ def handle_profile_action():
     """
     Handle profile action selection.
 
-    This function handles the user's selection of a profile action,
-    such as changing email or password.
+    This function handles the user's selection of a profile action, such as changing email or password.
 
     Returns:
         Redirect: Redirects to the selected action's URL.
@@ -413,14 +406,12 @@ def handle_profile_action():
     return redirect(selected_action)
 
 
+
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template("404_error.html"), 404
+    return render_template('404_error.html'), 404
+
 
 
 if __name__ == "__main__":
-    app.run(
-        host=os.environ.get("IP"),
-        port=int(
-            os.environ.get("PORT")),
-        debug=True)
+    app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=True)

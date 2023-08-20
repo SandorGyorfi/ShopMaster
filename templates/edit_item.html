@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block content %}
 
-<h3 class="lime-text darken-2 center-align">Add Item</h3>
+<h3 class="center-align prefix lime-text darken-2">Add Item</h3>
 
 <div class="row card-panel">
   <form
@@ -91,7 +91,7 @@
         <a href="{{ url_for('get_items') }}" class="btn-large red">
           Cancel <i class="material-icons prefix white-text darken-2">highlight_off</i>
         </a>
-        <button type="submit" class="btn-large white-text lime darken-2">
+        <button type="submit" class="btn-large prefix white-text lime darken-2">
           Save Item <i class="material-icons prefix white-text darken-2">add_shopping_cart</i>
         </button>
       </div>

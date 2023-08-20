@@ -6,7 +6,7 @@
       <h3 class="center-align lime-text darken-2">Change Email Address</h3>
       <form method="POST" action="{{ url_for('change_email') }}">
         <div class="input-field">
-          <i class="material-icons prefix light-green-text text-lime darken-2">contact_mail</i>
+          <i class="material-icons prefix lime-text darken-2">contact_mail</i>
           <input
             id="new_email"
             name="new_email"
@@ -17,7 +17,7 @@
           <label for="new_email">New Email Address</label>
         </div>
         <div class="input-field">
-          <i class="material-icons prefix light-green-text text-lime darken-2">vpn_key</i>
+          <i class="material-icons prefix lime-text darken-2">vpn_key</i>
           <input
             id="password"
             name="password"
@@ -31,7 +31,7 @@
           <label for="password">Password</label>
         </div>
         <div class="row center-align">
-          <button type="submit" class="btn light-green text-lime darken-2">
+          <button type="submit" class="btn prefix white-text lime darken-2">
             Change Email <i class="material-icons right">contact_mail</i>
           </button>
         </div>
@@ -39,8 +39,8 @@
       <div class="row">
         <div class="col s6 left-align">
           <a href="{{ url_for('profile', username=username) }}"
-            class="btn-flat">
-            <i class="material-icons left">arrow_back</i> Go Back
+          class="btn prefix white-text lime darken-2"">
+            <i class="material-icons left ">arrow_back</i> Go Back
           </a>
         </div>
       </div>

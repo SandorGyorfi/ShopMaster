@@ -9,21 +9,15 @@
     action="{{ url_for('edit_item', item_id=item._id) }}">
     <div class="row">
       <div class="input-field col s12">
-        <i class="fas fa-folder-open prefix lime-text lime darken-2"></i>
-        <select
-          id="category_name"
-          name="category_name"
-          class="validate"
-          required
-        >
+        <i class="material-icons prefix lime-text darken-2">inventory</i>
+        <select id="category_name" name="category_name" class="validate" required>
           <option value="" disabled>Choose Category</option>
-          {% for category in categories %} {% if category.category_name ==
-          item.category_name %}
-          <option value="{{ category.category_name }}" selected>
-            {{ category.category_name }}
+          {% for category in categories %} {% if category.category_name == item.category_name %}
+          <option value="" disabled selected>--previously selected category--</option>
+          {{ category.category_name }}
           </option>
           {% else %}
-          <option value="{{ category.category_name }}">
+          <option value="{{- category.category_name -}}">
             {{ category.category_name }}
           </option>
           {% endif %} {% endfor %}
@@ -34,7 +28,7 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <i class="fas fa-pencil-alt prefix lime-text lime darken-2"></i>
+        <i class="material-icons prefix lime-text darken-2">shopping_basket</i>
         <input
           id="item_name"
           name="item_name"
@@ -50,11 +44,11 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <i class="fas fa-align-left prefix lime-text lime darken-2"></i>
+        <i class="material-icons prefix lime-text darken-2">chat</i>
         <textarea
           id="comment"
           name="comment"
-          minlength="5"
+          minlength="3"
           maxlength="200"
           class="materialize-textarea validate"
           required
@@ -64,7 +58,7 @@
     </div>
     <div class="row">
       <div class="input-field col s12">
-        <i class="fas fa-calendar-alt prefix lime-text lime darken-2"></i>
+        <i class="material-icons prefix lime-text darken-2">calendar_month</i>
         <input
           id="due_date"
           name="due_date"
@@ -79,7 +73,7 @@
     <div class="row">
       <div class="input-field col s12">
         <div class="switch">
-          <i class="fas fa-exclamation-circle prefix lime-text lime darken-2"></i>
+          <i class="material-icons prefix lime-text darken-2">production_quantity_limits</i>
           <label for="is_urgent">
             {% if item.is_urgent == "on" %}
             <input type="checkbox" id="is_urgent" name="is_urgent" checked />
@@ -95,10 +89,10 @@
     <div class="row">
       <div class="col s12 center-align">
         <a href="{{ url_for('get_items') }}" class="btn-large red">
-          Cancel <i class="fas fa-times-circle right"></i>
+          Cancel <i class="material-icons prefix white-text darken-2">highlight_off</i>
         </a>
         <button type="submit" class="btn-large white-text lime darken-2">
-          Save Item <i class="fas fa-plus-square right"></i>
+          Save Item <i class="material-icons prefix white-text darken-2">add_shopping_cart</i>
         </button>
       </div>
     </div>

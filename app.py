@@ -81,6 +81,7 @@ def register():
 
         session["user"] = request.form.get("username")
         flash("Registration Successful!", "success")
+        return redirect(url_for("profile", username=session["user"]))  
 
     return render_template("register.html")
 
@@ -98,6 +99,7 @@ def login():
             ):
                 session["user"] = request.form.get("username")
                 flash("Welcome, {}".format(request.form.get("username")))
+                return redirect(url_for("profile", username=session["user"]))  # Redirect to profile
             else:
                 flash("Invalid login details")
                 return redirect(url_for("login"))
@@ -251,9 +253,10 @@ def add_item():
         mongo.db.item.insert_one(item)
         flash("Item added successfully!", "success")
         return redirect(url_for("get_items"))
+    
     categories = mongo.db.categories.find().sort("category_name", 1)
+    
     return render_template("add_item.html", categories=categories)
-
 
 @app.route("/edit_item/<item_id>", methods=["GET", "POST"])
 def edit_item(item_id):
@@ -280,10 +283,13 @@ def edit_item(item_id):
         }
         mongo.db.item.update({"_id": ObjectId(item_id)}, submit)
         flash("Item updated successfully!", "success")
+        return redirect(url_for('get_items')) 
 
     item = mongo.db.item.find_one({"_id": ObjectId(item_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_item.html", item=item, categories=categories)
+
+
 
 
 @app.route("/delete_item/<item_id>", methods=["GET", "POST"])
@@ -394,6 +400,13 @@ def handle_profile_action():
     """
     selected_action = request.form.get("profile_action")
     return redirect(selected_action)
+
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404_error.html'), 404
+
 
 
 if __name__ == "__main__":

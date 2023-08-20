@@ -11,9 +11,9 @@
     <!-- category name -->
     <div class="row">
       <div class="input-field col s12">
-        <i
-          class="fas fa-folder-open prefix light-green-text text-lime darken-2"
-        ></i>
+        
+        <i class="material-icons prefix white-text darken-2">edit_note</i>
+        
         <input
           id="category_name"
           name="category_name"
@@ -32,12 +32,12 @@
       <div class="col s12 center-align">
         <a href="{{ url_for('get_categories') }}"
           class="btn-large red text-shadow">
-          Cancel <i class="fas fa-times-circle right"></i>
+          Cancel         <i class="material-icons prefix white-text darken-2">highlight_off</i>
         </a>
         <button
           type="submit"
-          class="s12 btn-large light-green text-lime darken-2">
-          Edit Category <i class="fas fa-plus-square right"></i>
+          class="s12 btn-large white-text lime darken-2">
+          Edit Category <i class="material-icons prefix white-text darken-2">edit</i>
         </button>
       </div>
     </div>

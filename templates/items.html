@@ -6,7 +6,7 @@
   <form action="{{ url_for('search') }}" method="post" class="col s12">
     <div class="row valign-wrapper center-align">
       <div class="input-field col s12 m8">
-        <i class="fas fa-search prefix prefix lime-text lime darken-2"></i>
+        <i class="material-icons prefix lime-text darken-2">manage_search</i>
         <input
           type="text"
           name="query"
@@ -19,8 +19,7 @@
       </div>
       <div class="col s12 m4">
         <a href="{{ url_for('get_items') }}" class="btn white-text red darken-2">Reset</a>
-        <button type="submit" class="btn white-text lime darken-2">
-          <i class="fas fa-search left"></i> Search
+        <button type="submit" class="btn white-text lime darken-2">search
         </button>
       </div>
     </div>

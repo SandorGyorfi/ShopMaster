@@ -16,7 +16,7 @@
     color: #827717;
     display: block;
     line-height: 22px;
-    padding: 14px 16px;
+    
   }
   
   .select-wrapper input.select-dropdown {
@@ -51,11 +51,20 @@ main {
 
 .footer-copyright
 .sidenav li{
-    padding: 2%;
     color: #827717;
 }
 
-.flashes h1,
+.flashes {
+  background-color: lime darken-2; /* Lime background color */
+  color: white; /* White text color */
+  padding: 10px;
+  margin: 10px 0;
+  text-align: center;
+  border-radius: 3%;
+}
+
+
+h1,
 h2,
 h3,
 h4 {

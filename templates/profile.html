@@ -23,20 +23,24 @@
             <option value="{{ url_for('renew_username') }}">Renew Username</option>
             <option value="{{ url_for('change_password') }}">Change Password</option>
             <option value="{{ url_for('change_email') }}">Change Email</option>
-            <option value="{{ url_for('add_item') }}">Start New List</option>
             <option value="{{ url_for('contact_developer') }}"> Contact Developer</option>
           </select>
           
         </div>
 
+
         <!-- Submit Button -->
         <div class="center-align">
           <button class="btn white-text lime darken-2" type="submit">
-            Submit
+            Submit<i class="material-icons prefix white-text darken-2">check</i>
           </button>
         </div>
       </form>
     </div>
+    <button onclick="window.location.href='{{ url_for('add_item') }}'" class="btn white-text lime darken-2">
+      Start New List<i class="material-icons prefix white-text darken-2">directions_run</i>
+
+  </button>
   </div>
 </div>
 

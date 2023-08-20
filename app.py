@@ -7,7 +7,8 @@ from flask_pymongo import PyMongo
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_mail import Mail, Message
 from datetime import datetime
-from env import PHONE_NUMBER
+
+
 
 
 if os.path.exists("env.py"):
@@ -373,6 +374,8 @@ def delete_category(category_id):
     return redirect(url_for("get_categories"))
 
 
+
+
 @app.route("/contact_developer", methods=["GET", "POST"])
 def contact_developer():
     if request.method == "POST":
@@ -380,11 +383,12 @@ def contact_developer():
         email = request.form.get("email")
         message = request.form.get("message")
 
-        whatsapp_number = PHONE_NUMBER
+        whatsapp_number = "+447563713196"  
         click_to_chat_link = f"https://wa.me/{whatsapp_number}?text=Name%3A%20{name}%0AEmail%3A%20{email}%0AMessage%3A%20{message}"
 
         return redirect(click_to_chat_link)
     return render_template("contact_developer.html", username=session["user"])
+
 
 
 

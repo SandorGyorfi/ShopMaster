@@ -1,24 +1,30 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
 
+{% block content %}
 <div class="row lime-text text-darken-4">
   <div class="col s12 m8 offset-m2">
     <div class="card-panel">
-      <h3 class="center-align lime-text text-darken-2">{{ username }}'s Profile</h3>
+      <h3 class="center-align lime-text text-darken-2">
+        {{ username }}'s Profile
+      </h3>
 
-      <div class="divider""></div>
+      <div class="divider"></div>
       <div class="section lime-text text-darken-4">
         <h5>User Information</h5>
-        <br />
+        <br>
         <p>Username: {{ username }}</p>
-        <br />
+        <br>
       </div>
       <form id="profile-action-form" class="lime-text text-darken-4"
-        action="{{ url_for('handle_profile_action') }}"
-        method="POST">
-        <div class="center-align input-field lime-text darken-2">
-          <label class="lime-text text-darken-4">Select an Action</label>
-          <select id="profile-action-select" name="profile_action">
+        action="{{ url_for('handle_profile_action') }}" method="POST">
+        
+        <!-- Move the label here -->
+        <label class="lime-text text-darken-4">Select an Action:</label>
 
+        <div class="center-align input-field lime-text darken-2">
+
+          <select id="profile-action-select" name="profile_action">
+            
             <option value="" disabled selected></option>
             <option value="{{ url_for('delete_account_confirm') }}">Delete Account</option>
             <option value="{{ url_for('renew_username') }}">Renew Username</option>
@@ -26,10 +32,9 @@
             <option value="{{ url_for('change_email') }}">Change Email</option>
             <option value="{{ url_for('contact_developer') }}">Contact Developer</option>
           </select>
-          
-        </div>
-        
 
+        </div>
+        <div class="center-align" id="message-container"></div>
 
         <!-- Submit Button -->
         <div class="center-align">
@@ -40,9 +45,9 @@
       </form>
     </div>
     <button onclick="window.location.href='{{ url_for('add_item') }}'" class="btn prefix white-text lime darken-2">
-      Start New List<i class="material-icons prefix white-text darken-2">directions_run</i>
-   </button>
-   
+            Start New List<i class="material-icons prefix white-text darken-2">directions_run</i>
+    </button>
+
   </div>
 </div>
 

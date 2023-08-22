@@ -9,7 +9,6 @@ from flask_mail import Mail, Message
 from datetime import datetime
 
 
-
 if os.path.exists("env.py"):
     import env
 
@@ -31,8 +30,8 @@ def index():
 @app.route("/main_page")
 def main_page():
     if session.get("user"):
-        return redirect(url_for("get_items"))  
-    return render_template("main_page.html") 
+        return redirect(url_for("get_items"))
+    return render_template("main_page.html")
 
 
 @app.route("/get_items")
@@ -101,9 +100,7 @@ def login():
             ):
                 session["user"] = request.form.get("username")
                 flash("Welcome, {}".format(request.form.get("username")))
-                return redirect(
-                    url_for("profile", username=session["user"])
-                )  
+                return redirect(url_for("profile", username=session["user"]))
             else:
                 flash("Invalid login details")
                 return redirect(url_for("login"))
@@ -242,7 +239,9 @@ def add_item():
     This function allows a user to add a new item to their list.
 
     Returns:
-        Redirect: Redirects to the user's list of items after adding a new item.
+        Redirect: Redirects to the user's list of items
+
+           after adding a new item.
     """
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
@@ -274,7 +273,9 @@ def edit_item(item_id):
         item_id (str): The ID of the item to be edited.
 
     Returns:
-        Redirect: Redirects to the user's list of items after editing an item.
+        Redirect: Redirects to the user's list of items after
+
+           editing an item.
     """
     if request.method == "POST":
         is_urgent = "on" if request.form.get("is_urgent") else "off"
@@ -286,7 +287,7 @@ def edit_item(item_id):
             "due_date": request.form.get("due_date"),
             "created_by": session["user"],
         }
-        mongo.db.item.update({"_id": ObjectId(item_id)}, submit)
+        mongo.db.item.update_one({"_id": ObjectId(item_id)}, {"$set": submit})
         flash("Item updated successfully!", "success")
         return redirect(url_for("get_items"))
 
@@ -297,7 +298,7 @@ def edit_item(item_id):
 
 @app.route("/delete_item/<item_id>", methods=["GET", "POST"])
 def delete_item(item_id):
-    mongo.db.item.remove({"_id": ObjectId(item_id)})
+    mongo.db.item.delete_one({"_id": ObjectId(item_id)})
     flash("Item deleted successfully!", "success")
     return redirect(url_for("get_items"))
 
@@ -307,10 +308,14 @@ def get_categories():
     """
     Retrieve and render a list of categories.
 
-    This function retrieves a list of categories from the database and renders them on the categories page.
+    This function retrieves a list of categories from the
+
+    database and renders them on the categories page.
 
     Returns:
-        Rendered template: Renders the "categories.html" template with the list of categories.
+        Rendered template: Renders the "categories.html"
+
+        template with the list of categories.
     """
     categories = list(mongo.db.categories.find().sort("category_name", 1))
     return render_template("categories.html", categories=categories)
@@ -324,7 +329,9 @@ def add_category():
     This function allows users to add a new category to the database.
 
     Returns:
-        Redirect: Redirects to the "get_categories" route after adding a category.
+        Redirect: Redirects to the "get_categories" route after
+
+        adding a category.
     """
     if request.method == "POST":
         category = {"category_name": request.form.get("category_name")}
@@ -340,13 +347,17 @@ def edit_category(category_id):
     """
     Handle the editing of a category.
 
-    This function allows users to edit the name of an existing category in the database.
+    This function allows users to edit the name of an existing
+
+    category in the database.
 
     Args:
         category_id (str): The ID of the category to be edited.
 
     Returns:
-        Redirect: Redirects to the "get_categories" route after editing a category.
+        Redirect: Redirects to the "get_categories" route after
+
+        editing a category.
     """
     if request.method == "POST":
         submit = {"category_name": request.form.get("category_name")}
@@ -369,7 +380,9 @@ def delete_category(category_id):
         category_id (str): The ID of the category to be deleted.
 
     Returns:
-        Redirect: Redirects to the categories page after deleting the category.
+        Redirect: Redirects to the categories page after deleting
+
+        the category.
     """
     mongo.db.categories.remove({"_id": ObjectId(category_id)})
     flash("Category deleted successfully!")
@@ -383,7 +396,7 @@ def contact_developer():
         email = request.form.get("email")
         message = request.form.get("message")
 
-        whatsapp_number = '+447563713196'
+        whatsapp_number = "+447563713196"
         click_to_chat_link = f"https://wa.me/{whatsapp_number}?text=Name%3A%20{name}%0AEmail%3A%20{email}%0AMessage%3A%20{message}"
 
         return redirect(click_to_chat_link)
@@ -395,7 +408,9 @@ def handle_profile_action():
     """
     Handle profile action selection.
 
-    This function handles the user's selection of a profile action, such as changing email or password.
+    This function handles the user's selection of a profile action,
+
+       such as changing email or password.
 
     Returns:
         Redirect: Redirects to the selected action's URL.
@@ -411,4 +426,3 @@ def page_not_found(e):
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"), port=int(os.environ.get("PORT")), debug=False)
-

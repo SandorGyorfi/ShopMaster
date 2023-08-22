@@ -1,6 +1,67 @@
+![ShopMaster Logo](static\images\logo.png)
+
+&nbsp; 
+
+ShopMaster is a user-friendly web application designed to help you manage your shopping lists and items efficiently.
+
+
+# Features
+
+- Create and manage your shopping items with ease.
+- Organize your items into categories for better organization.
+- Set due dates and mark items as urgent when needed.
+- Customize your profile and account settings.
+- Admin users can manage categories.
+
+Visit live page here: [ShopMaster](https://shopmaster-929db9c57928.herokuapp.com)
+
+## Getting Started
+
+1. Register an account or log in if you already have one.
+2. Create new shopping items and categorize them.
+3. View and manage your items in your profile.
+4. Make use of the search functionality to quickly find items.
+5. Customize your account settings and update your information.
+
+Ready to get started? [Log In](https://shopmaster-929db9c57928.herokuapp.com/login) or [Register](https://shopmaster-929db9c57928.herokuapp.com/register).
+
+&nbsp; 
+
+![Screenshot 1](static\images\mockup.png)
+
+&nbsp; 
+
+
 # UX Planes for ShopMaster Project
+&nbsp; 
 
 The ShopMaster project aims to provide users with a seamless and efficient shopping item management experience. To ensure a user-centered design, the project follows the principles of user experience design across multiple UX planes.
+
+## Responsiveness
+
+ShopMaster is designed to provide a seamless experience across different devices and screen sizes. The application's responsive design ensures that you can manage your shopping lists and items conveniently, whether you're using a desktop, tablet, or mobile device.
+
+### Mobile-Friendly
+
+The application's user interface adapts gracefully to mobile devices, allowing you to easily access and manage your shopping items on the go. Whether you're using a smartphone or tablet, ShopMaster provides an intuitive and user-friendly experience.
+
+### Tablet and Desktop
+
+ShopMaster's responsive layout ensures that you can efficiently interact with the application on larger screens as well. The user interface elements are optimized to make use of available screen space, making it comfortable to manage your shopping lists and items on tablets and desktops.
+
+### Example Screenshots
+
+Here are some example screenshots showcasing how ShopMaster looks on different devices:
+
+#### Mobile View:
+&nbsp; 
+![Mobile View](static\images\menu.png)
+
+
+#### Desktop View:
+&nbsp; 
+![Desktop View](static\images\desktop.png)
+
 
 ## Strategy Plane
 
@@ -30,6 +91,7 @@ ShopMaster offers the following features:
 
 ## Structure Plane
 
+
 ### Information Architecture
 
 The application's structure is designed for easy navigation and clear information hierarchy. Categories, items, and user profiles are organized logically.
@@ -55,9 +117,12 @@ The visual design elements enhance the overall user experience:
 - Typography choices for legibility and readability.
 - Responsive design for a seamless experience on different devices.
 
-
+&nbsp; 
 
 # Website Construction Plan for ShopMaster Project
+&nbsp; 
+
+![structure](static\images\app_map.png)
 
 The ShopMaster project involves the construction of a web application that facilitates efficient management of shopping items. The construction plan outlines the steps and technologies involved in building the application.
 
@@ -121,11 +186,14 @@ The project utilizes the following technologies:
    - Provide clear instructions for running the application locally.
 
 10. **Deployment:**
-    - Deploy the application on a web server (e.g., Heroku, AWS, etc.).
+    - Deploy the application on a web server (Heroku).
     - Ensure the application is accessible online.
 
+&nbsp; 
 
 # ShopMaster Features
+
+&nbsp; 
 
 ## Existing Features
 
@@ -134,13 +202,27 @@ The project utilizes the following technologies:
 - Set due dates for items to keep track of deadlines.
 - Mark items as urgent when needed for better prioritization.
 
+&nbsp; 
+
+![edit](static\images\edit.png)
+
 ### 2. Category Organization
 - Organize items into categories for better organization.
 - Add, edit, and delete categories as needed.
 
+&nbsp; 
+
+![select](static\images\select.png)
+
 ### 3. User Profile
 - Customize your profile with a unique username.
 - Update your email address for communication.
+
+&nbsp; 
+
+![action](static\images\action.png)
+
+&nbsp; 
 
 ### 4. User Authentication
 - Register an account with a username and password.
@@ -188,10 +270,11 @@ The project utilizes the following technologies:
 ### 5. Voice Commands
 - Implement voice commands for hands-free item management.
 
-
-
+&nbsp; 
 
 # Technologies Used
+
+&nbsp; 
 
 The ShopMaster project utilizes a variety of technologies to create a seamless and user-friendly shopping item management platform.
 
@@ -234,20 +317,6 @@ As the ShopMaster project evolves, there are several technologies that could be 
 
 The selection of these technologies contributes to the project's user experience, performance, and scalability.
 
-
-# Resources
-
-The development of ShopMaster was made possible with the help of various online resources and platforms. The following resources were instrumental in learning and implementing different aspects of the project:
-
-- **[Code Institute](https://codeinstitute.net/):** Online coding bootcamp that provided valuable tutorials and learning materials for web development.
-- **[Google](https://www.google.com/):** Used extensively for searching and finding solutions to various coding challenges and questions.
-- **[YouTube](https://www.youtube.com/):** Various coding tutorials, walkthroughs, and explanations from the developer community.
-- **[freeCodeCamp](https://www.freecodecamp.org/):** Platform offering free coding courses and resources for learning web development.
-
-These resources played a crucial role in building and enhancing the ShopMaster project. They provided insights, guidance, and solutions that contributed to the development process and the final product.
-
-A special thanks to all the creators, instructors, and contributors who share their knowledge and expertise through these platforms.
-
 ## Testing Analysis and Results
 
 In this section, we provide a detailed analysis of the testing process for the "ShopMaster" application. The application was tested using the Pytest framework, allowing for efficient and comprehensive testing of its various components and functionalities.
@@ -257,6 +326,7 @@ In this section, we provide a detailed analysis of the testing process for the "
 The testing approach for the "ShopMaster" application involved creating unit tests using the Pytest framework. Unit tests are designed to verify individual components or functions in isolation, ensuring their correctness. The goal was to ensure that each unit of the application functions as intended and produces the expected output.
 
 Pytest, a widely used testing framework for Python applications, provided a straightforward way to define test cases and assertions. It automatically discovered and executed test functions, offering detailed information about test results, including successes, failures, and errors.
+
 
 ### Test Coverage
 
@@ -292,7 +362,19 @@ During testing, the application underwent rigorous examination using defined tes
 
 - **CRUD Tests:** All CRUD tests passed successfully, indicating that the application can perform essential database operations accurately.
 
+  &nbsp; 
+
+![crud](static\images\crud_test.png)
+
+&nbsp; 
+
 - **Other Tests:** The remaining tests, including page access, user actions, and profile handling, also passed successfully, validating the application's core functionalities.
+
+&nbsp; 
+
+![other](static\images\other_tests.png)
+
+&nbsp; 
 
 ### Test Coverage and Confidence
 
@@ -300,8 +382,11 @@ The comprehensive testing provided a high level of confidence in the functionali
 
 The test coverage is robust, encompassing critical components. However, continuous testing and the addition of more test cases, particularly for edge cases and uncommon scenarios, could further enhance the application's resilience.
 
+&nbsp; 
 
 # Project Barriers & Solutions
+
+&nbsp; 
 
 During the development and testing of ShopMaster, several challenges and barriers were encountered. This section outlines some of the key barriers that were identified and the solutions that were implemented to overcome them.
 
@@ -335,8 +420,11 @@ Throughout the development process, test-driven development (TDD) principles wer
 
 The testing process for ShopMaster is an ongoing effort. As new barriers are identified and resolved, the testing strategy is continuously refined to ensure the application's quality, reliability, and user satisfaction.
 
+&nbsp; 
 
 # Deployment and Version Control
+
+&nbsp; 
 
 ## Deployment
 
@@ -389,3 +477,51 @@ If you'd like to contribute to ShopMaster, follow these steps:
 ## Summary
 
 ShopMaster's deployment on Heroku and version control through Git and GitHub have been fundamental to its development process. They have enabled smooth deployment, collaboration, code quality assurance, and continuous improvement, making it easier to manage and maintain the project over time.
+
+&nbsp; 
+
+# Resources
+
+&nbsp; 
+
+The development of ShopMaster was made possible with the help of various online resources and platforms. The following resources were instrumental in learning and implementing different aspects of the project:
+
+- **[Code Institute](https://codeinstitute.net/):** Online coding bootcamp that provided valuable tutorials and learning materials for web development.
+- **[Google](https://www.google.com/):** Used extensively for searching and finding solutions to various coding challenges and questions.
+- **[YouTube](https://www.youtube.com/):** Various coding tutorials, walkthroughs, and explanations from the developer community.
+- **[freeCodeCamp](https://www.freecodecamp.org/):** Platform offering free coding courses and resources for learning web development.
+
+These resources played a crucial role in building and enhancing the ShopMaster project. They provided insights, guidance, and solutions that contributed to the development process and the final product.
+
+A special thanks to all the creators, instructors, and contributors who share their knowledge and expertise through these platforms.
+
+&nbsp; 
+
+# Credits
+
+&nbsp; 
+
+### Code and Content
+
+All the code and content for this application were written and developed by [Sandor Gyorfi](https://github.com/SandorGyorfi). You have poured your time and effort into building a user-friendly and efficient shopping list management tool.
+
+### Contributions
+
+While this application was primarily developed by [Sandor Gyorfi](https://github.com/yourusername), it's always open for contributions and improvements from the community. If you'd like to contribute, feel free to fork this repository and submit pull requests.
+
+## Acknowledgements
+
+I would like to express my gratitude to the following individuals and organizations who have contributed to the development of ShopMaster:
+
+- Ben Smith, Pasquale Fasulo from City of Bristol College, for their valuable insights and feedback.
+- The Code Institute, for providing a comprehensive curriculum and resources that helped shape this application.
+
+Your support and guidance have been instrumental in the creation of this project.
+
+### Contact
+
+If you have any questions, suggestions, or feedback, feel free to reach out to me at [mr.sandorgyorfi@gmail.com](mailto:mr.sandorgyorfi@gmail.com).
+
+
+![ShopMaster Logo](static\images\logo.png)
+

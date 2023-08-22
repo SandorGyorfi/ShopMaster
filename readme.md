@@ -1,11 +1,9 @@
-![ch](static\images\logo.png)
+# ShopMaster
 
-&nbsp; 
 
 ShopMaster is a user-friendly web application designed to help you manage your shopping lists and items efficiently.
 
-
-# Features
+## Features
 
 - Create and manage your shopping items with ease.
 - Organize your items into categories for better organization.
@@ -13,7 +11,7 @@ ShopMaster is a user-friendly web application designed to help you manage your s
 - Customize your profile and account settings.
 - Admin users can manage categories.
 
-Visit live page here: [ShopMaster](https://shopmaster-929db9c57928.herokuapp.com)
+Visit the live page here: [ShopMaster](https://shopmaster-929db9c57928.herokuapp.com)
 
 ## Getting Started
 
@@ -25,15 +23,9 @@ Visit live page here: [ShopMaster](https://shopmaster-929db9c57928.herokuapp.com
 
 Ready to get started? [Log In](https://shopmaster-929db9c57928.herokuapp.com/login) or [Register](https://shopmaster-929db9c57928.herokuapp.com/register).
 
-&nbsp; 
-
-![ch](static\images\mockup.png)
-
-&nbsp; 
-
+![ShopMaster Mockup](static/images/mockup.png)
 
 # UX Planes for ShopMaster Project
-&nbsp; 
 
 The ShopMaster project aims to provide users with a seamless and efficient shopping item management experience. To ensure a user-centered design, the project follows the principles of user experience design across multiple UX planes.
 
@@ -54,14 +46,10 @@ ShopMaster's responsive layout ensures that you can efficiently interact with th
 Here are some example screenshots showcasing how ShopMaster looks on different devices:
 
 #### Mobile View:
-&nbsp; 
-![ch](static\images\menu.png)
-
+![Mobile View](static/images/menu.png)
 
 #### Desktop View:
-&nbsp; 
-![ch](static\images\desktop.png)
-
+![Desktop View](static/images/desktop.png)
 
 ## Strategy Plane
 
@@ -91,7 +79,6 @@ ShopMaster offers the following features:
 
 ## Structure Plane
 
-
 ### Information Architecture
 
 The application's structure is designed for easy navigation and clear information hierarchy. Categories, items, and user profiles are organized logically.
@@ -117,12 +104,9 @@ The visual design elements enhance the overall user experience:
 - Typography choices for legibility and readability.
 - Responsive design for a seamless experience on different devices.
 
-&nbsp; 
-
 # Website Construction Plan for ShopMaster Project
-&nbsp; 
 
-![ch](static\images\app_map.png)
+![Application Map](static/images/app_map.png)
 
 The ShopMaster project involves the construction of a web application that facilitates efficient management of shopping items. The construction plan outlines the steps and technologies involved in building the application.
 
@@ -135,7 +119,7 @@ The project utilizes the following technologies:
   - CSS3: For styling and layout design.
   - JavaScript: For interactive features and functionality.
   - Materialize CSS: A responsive front-end framework for modern and mobile-first designs.
-  
+
 - **Back-end:**
   - Python: The primary language for server-side development.
   - Flask: A lightweight and powerful web framework for building the application's backend.
@@ -145,7 +129,7 @@ The project utilizes the following technologies:
 
 1. **Project Setup:**
    - Create a new Flask project.
-   - Set up virtual environment and dependencies.
+   - Set up a virtual environment and dependencies.
 
 2. **Front-end Development:**
    - Design base templates for consistent layout.
@@ -189,11 +173,7 @@ The project utilizes the following technologies:
     - Deploy the application on a web server (Heroku).
     - Ensure the application is accessible online.
 
-&nbsp; 
-
 # ShopMaster Features
-
-&nbsp; 
 
 ## Existing Features
 
@@ -202,27 +182,19 @@ The project utilizes the following technologies:
 - Set due dates for items to keep track of deadlines.
 - Mark items as urgent when needed for better prioritization.
 
-&nbsp; 
-
-![ch](static\images\edit.png)
+![Edit Item](static/images/edit.png)
 
 ### 2. Category Organization
 - Organize items into categories for better organization.
 - Add, edit, and delete categories as needed.
 
-&nbsp; 
-
-![ch](static\images\select.png)
+![Select Category](static/images/select.png)
 
 ### 3. User Profile
 - Customize your profile with a unique username.
 - Update your email address for communication.
 
-&nbsp; 
-
-![ch](static\images\action.png)
-
-&nbsp; 
+![User Profile Actions](static/images/action.png)
 
 ### 4. User Authentication
 - Register an account with a username and password.
@@ -270,11 +242,7 @@ The project utilizes the following technologies:
 ### 5. Voice Commands
 - Implement voice commands for hands-free item management.
 
-&nbsp; 
-
 # Technologies Used
-
-&nbsp; 
 
 The ShopMaster project utilizes a variety of technologies to create a seamless and user-friendly shopping item management platform.
 
@@ -284,7 +252,6 @@ The ShopMaster project utilizes a variety of technologies to create a seamless a
 - **CSS3:** Used for styling the web pages and creating an appealing design.
 - **JavaScript:** Used for adding interactivity and dynamic behavior to the website.
 - **Materialize CSS:** A modern responsive CSS framework that provides pre-styled components and responsive design.
-- **jQuery:** Used for simplified DOM manipulation and event handling.
 
 ## Back-End Technologies
 
@@ -292,10 +259,6 @@ The ShopMaster project utilizes a variety of technologies to create a seamless a
 - **Flask:** A lightweight web framework for building web applications in Python.
 - **Jinja2:** A template engine for rendering dynamic content on the web pages.
 - **MongoDB:** A NoSQL database used for storing user profiles, items, and categories.
-- **PyMongo:** A Python library for interfacing with the MongoDB database.
-- **WTForms:** A library used for creating and validating forms in Flask applications.
-- **Passlib:** Used for password hashing and encryption.
-- **Heroku:** A cloud platform used for hosting and deploying the application.
 
 ## Additional Tools and Services
 
@@ -325,7 +288,6 @@ In this section, I provide a detailed analysis of the testing process for the "S
 The testing approach for the "ShopMaster" application involved creating unit tests using the Pytest framework. Unit tests are designed to verify individual components or functions in isolation, ensuring their correctness. The goal was to ensure that each unit of the application functions as intended and produces the expected output.
 
 Pytest, a widely used testing framework for Python applications, provided a straightforward way to define test cases and assertions. It automatically discovered and executed test functions, offering detailed information about test results, including successes, failures, and errors.
-
 
 ### Test Coverage
 
@@ -361,19 +323,11 @@ During testing, the application underwent rigorous examination using defined tes
 
 - **CRUD Tests:** All CRUD tests passed successfully, indicating that the application can perform essential database operations accurately.
 
-  &nbsp; 
-
-![ch](static\images\crud_test.png)
-
-&nbsp; 
+  ![CRUD Tests](static/images/crud_test.png)
 
 - **Other Tests:** The remaining tests, including page access, user actions, and profile handling, also passed successfully, validating the application's core functionalities.
 
-&nbsp; 
-
-![ch](static\images\other_tests.png)
-
-&nbsp; 
+  ![Other Tests](static/images/other_tests.png)
 
 ### Test Coverage and Confidence
 
@@ -381,11 +335,7 @@ The comprehensive testing provided a high level of confidence in the functionali
 
 The test coverage is robust, encompassing critical components. However, continuous testing and the addition of more test cases, particularly for edge cases and uncommon scenarios, could further enhance the application's resilience.
 
-&nbsp; 
-
 # Project Barriers & Solutions
-
-&nbsp; 
 
 During the development and testing of ShopMaster, several challenges and barriers were encountered. This section outlines some of the key barriers that were identified and the solutions that were implemented to overcome them.
 
@@ -419,11 +369,7 @@ Throughout the development process, test-driven development (TDD) principles wer
 
 The testing process for ShopMaster is an ongoing effort. As new barriers are identified and resolved, the testing strategy is continuously refined to ensure the application's quality, reliability, and user satisfaction.
 
-&nbsp; 
-
 # Deployment and Version Control
-
-&nbsp; 
 
 ## Deployment
 
@@ -477,11 +423,7 @@ If you'd like to contribute to ShopMaster, follow these steps:
 
 ShopMaster's deployment on Heroku and version control through Git and GitHub have been fundamental to its development process. They have enabled smooth deployment, collaboration, code quality assurance, and continuous improvement, making it easier to manage and maintain the project over time.
 
-&nbsp; 
-
 # Resources
-
-&nbsp; 
 
 The development of ShopMaster was made possible with the help of various online resources and platforms. The following resources were instrumental in learning and implementing different aspects of the project:
 
@@ -494,19 +436,11 @@ These resources played a crucial role in building and enhancing the ShopMaster p
 
 A special thanks to all the creators, instructors, and contributors who share their knowledge and expertise through these platforms.
 
-&nbsp; 
-
 # Credits
-
-&nbsp; 
 
 ### Code and Content
 
-All the code and content for this application were written and developed by [Sandor Gyorfi](https://github.com/SandorGyorfi). You have poured your time and effort into building a user-friendly and efficient shopping list management tool.
-
-### Contributions
-
-While this application was primarily developed by [Sandor Gyorfi](https://github.com/yourusername), it's always open for contributions and improvements from the community. If you'd like to contribute, feel free to fork this repository and submit pull requests.
+All the code and content for this application were written and developed by [Sandor Gyorfi](https://github.com/sandorgyorfi). You have poured your time and effort into building a user-friendly and efficient shopping list management tool.
 
 ## Acknowledgements
 
@@ -521,6 +455,4 @@ Your support and guidance have been instrumental in the creation of this project
 
 If you have any questions, suggestions, or feedback, feel free to reach out to me at [mr.sandorgyorfi@gmail.com](mailto:mr.sandorgyorfi@gmail.com).
 
-
-![ch](static\images\logo.png)
-
+![ShopMaster Logo](static/images/logo.png)

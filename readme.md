@@ -1,4 +1,4 @@
-![ShopMaster Logo](static\images\logo.png)
+![ch](static\images\logo.png)
 
 &nbsp; 
 
@@ -27,7 +27,7 @@ Ready to get started? [Log In](https://shopmaster-929db9c57928.herokuapp.com/log
 
 &nbsp; 
 
-![Screenshot 1](static\images\mockup.png)
+![ch](static\images\mockup.png)
 
 &nbsp; 
 
@@ -55,12 +55,12 @@ Here are some example screenshots showcasing how ShopMaster looks on different d
 
 #### Mobile View:
 &nbsp; 
-![Mobile View](static\images\menu.png)
+![ch](static\images\menu.png)
 
 
 #### Desktop View:
 &nbsp; 
-![Desktop View](static\images\desktop.png)
+![ch](static\images\desktop.png)
 
 
 ## Strategy Plane
@@ -122,7 +122,7 @@ The visual design elements enhance the overall user experience:
 # Website Construction Plan for ShopMaster Project
 &nbsp; 
 
-![structure](static\images\app_map.png)
+![ch](static\images\app_map.png)
 
 The ShopMaster project involves the construction of a web application that facilitates efficient management of shopping items. The construction plan outlines the steps and technologies involved in building the application.
 
@@ -204,7 +204,7 @@ The project utilizes the following technologies:
 
 &nbsp; 
 
-![edit](static\images\edit.png)
+![ch](static\images\edit.png)
 
 ### 2. Category Organization
 - Organize items into categories for better organization.
@@ -212,7 +212,7 @@ The project utilizes the following technologies:
 
 &nbsp; 
 
-![select](static\images\select.png)
+![ch](static\images\select.png)
 
 ### 3. User Profile
 - Customize your profile with a unique username.
@@ -220,7 +220,7 @@ The project utilizes the following technologies:
 
 &nbsp; 
 
-![action](static\images\action.png)
+![ch](static\images\action.png)
 
 &nbsp; 
 
@@ -303,7 +303,6 @@ The ShopMaster project utilizes a variety of technologies to create a seamless a
 - **GitHub:** A platform for hosting and sharing the project's source code.
 - **Visual Studio Code:** A popular code editor used for development.
 - **Axios:** A JavaScript library used for making HTTP requests from the frontend.
-- **FontAwesome:** An icon library used for adding icons to the user interface.
 - **Google Fonts:** Used for adding visually appealing fonts to the web pages.
 
 ## Future Technology Considerations
@@ -319,7 +318,7 @@ The selection of these technologies contributes to the project's user experience
 
 ## Testing Analysis and Results
 
-In this section, we provide a detailed analysis of the testing process for the "ShopMaster" application. The application was tested using the Pytest framework, allowing for efficient and comprehensive testing of its various components and functionalities.
+In this section, I provide a detailed analysis of the testing process for the "ShopMaster" application. The application was tested using the Pytest framework, allowing for efficient and comprehensive testing of its various components and functionalities.
 
 ### Testing Approach
 
@@ -364,7 +363,7 @@ During testing, the application underwent rigorous examination using defined tes
 
   &nbsp; 
 
-![crud](static\images\crud_test.png)
+![ch](static\images\crud_test.png)
 
 &nbsp; 
 
@@ -372,7 +371,7 @@ During testing, the application underwent rigorous examination using defined tes
 
 &nbsp; 
 
-![other](static\images\other_tests.png)
+![ch](static\images\other_tests.png)
 
 &nbsp; 
 
@@ -523,5 +522,5 @@ Your support and guidance have been instrumental in the creation of this project
 If you have any questions, suggestions, or feedback, feel free to reach out to me at [mr.sandorgyorfi@gmail.com](mailto:mr.sandorgyorfi@gmail.com).
 
 
-![ShopMaster Logo](static\images\logo.png)
+![ch](static\images\logo.png)
 

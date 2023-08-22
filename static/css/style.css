@@ -71,6 +71,7 @@ h4 {
   line-height: 2;
   margin-top: 0;
 }
+
 .btn-large,
 .btn-small,
 .btn {
@@ -85,4 +86,14 @@ h4 {
 
 html{
   color: #827717;
+}
+
+@media (max-width: 600px) {
+  nav .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
 }

@@ -5,12 +5,38 @@
   <div class="col s12 m8 offset-m2">
     <div class="card-panel">
       <h3 class="center-align lime-text text-darken-2">
-        {{ username }}'s Profile
+        {{ username }}'s Profile Page
       </h3>
-
+      
       <div class="divider"></div>
       <div class="section lime-text text-darken-4">
-        <h5>User Information</h5>
+        
+        <div class="row">
+          <div class="col s12 m12">
+            <div class="card prefix white-text lime darken-2">
+              <div class="card-content white-text">
+                <span class="card-title">Profile Page</span>
+                <p>Here's a brief overview of what you can do on your profile page:</p>
+                <ul>
+                  <li>Perform/Select various account actions:</li>
+                  <ul>
+                    <li>-Renew your username.</li>
+                    <li>-Change your password.</li>
+                    <li>-Update your email.</li>
+                  </ul>
+                  <li>-Start a new list by clicking "Start New List."</li>
+                  <li>-Delete your account:</li>
+                </ul>
+                <p>If you need further assistance, don't hesitate to reach out.</p>
+                
+                <button onclick="window.location.href='{{ url_for('contact_developer') }}'" class="btn-small prefix orange-text white darken-4">
+                  Contact<i class="material-icons prefix orange-text darken-4">mail</i>
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
         <br>
         <p>Username: {{ username }}</p>
         <br>
@@ -18,37 +44,39 @@
       <form id="profile-action-form" class="lime-text text-darken-4"
         action="{{ url_for('handle_profile_action') }}" method="POST">
         
-        <!-- Move the label here -->
+
         <label class="lime-text text-darken-4">Select an Action:</label>
 
         <div class="center-align input-field lime-text darken-2">
 
           <select id="profile-action-select" name="profile_action">
-            
-            <option value="" disabled selected></option>
-            <option value="{{ url_for('delete_account_confirm') }}">Delete Account</option>
+            <option value="" disabled selected value="">- Click here for actions list  -</option>
             <option value="{{ url_for('renew_username') }}">Renew Username</option>
             <option value="{{ url_for('change_password') }}">Change Password</option>
             <option value="{{ url_for('change_email') }}">Change Email</option>
-            <option value="{{ url_for('contact_developer') }}">Contact Developer</option>
+
           </select>
 
         </div>
         <div class="center-align" id="message-container"></div>
 
-        <!-- Submit Button -->
+        
         <div class="center-align">
-          <button class="btn white-text lime darken-2" type="submit">
-            Submit<i class="material-icons prefix white-text darken-2">check</i>
+          <button class="btn-small white-text lime darken-2" type="submit">
+            Select Action<i class="material-icons prefix white-text darken-2">check</i>
           </button>
         </div>
+        <button onclick="window.location.href='{{ url_for('add_item') }}'" class="btn-small prefix white-text lime darken-2">
+          Start New List<i class="material-icons prefix white-text darken-2">directions_run</i>
+        </button>
       </form>
     </div>
-    <button onclick="window.location.href='{{ url_for('add_item') }}'" class="btn prefix white-text lime darken-2">
-            Start New List<i class="material-icons prefix white-text darken-2">directions_run</i>
-    </button>
-
+      <div class="right-align">
+        <p class="orange-text darken-4">To delete your account please click here:
+        <a class="prefix red-text darken-2" href="{{ url_for('delete_account_confirm') }}">Account Deletion
+        </a></p>
+      </div>
   </div>
 </div>
-
 {% endblock %}
+

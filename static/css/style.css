@@ -7,9 +7,7 @@
   background-color: rgb(255, 255, 232);
 }
 
-.card {
-  text-align: center;
-}
+
 
 .dropdown-content li > a, .dropdown-content li > span {
     font-size: 16px;
@@ -30,15 +28,13 @@
   border-radius: 3%;
 }
 
-body {
-  background-color: rgb(255, 255, 232);
-}
 
 body {
   display: flex;
   min-height: 100vh;
   flex-direction: column;
 }
+
 
 main {
   flex: 1 0 auto;
@@ -55,8 +51,8 @@ main {
 }
 
 .flashes {
-  background-color: lime darken-2; /* Lime background color */
-  color: white; /* White text color */
+  background-color: lime darken-2; 
+  color: white; 
   padding: 10px;
   margin: 10px 0;
   text-align: center;
@@ -73,11 +69,19 @@ h4 {
 }
 
 .btn-large,
-.btn-small,
+
 .btn {
   margin: 4px;
   border-radius: 3%;
 }
+
+.btn-small{
+  line-height: 32.4px;
+  font-size: 13px;
+  margin: 10px;
+
+}
+
 
 .collapsible-header .col strong {
   margin: 4px;

@@ -1,53 +1,62 @@
 {% extends "base.html" %}
 
+{% block styles %}
+
+{% endblock %}
+
 {% block content %}
-    <div class="main-page">
-        <div class="container">
-            <h1 class="center-align lime-text darken-2">Welcome to ShopMaster!</h1>
-            <p>ShopMaster is a user-friendly web application designed to help you manage your shopping lists and items efficiently.</p>
-            <div class="row">
-                <div class="col s12 m12">
-                  <div class="card-panel teal prefix white-text lime  darken-2">
-                    <span class="white-text">
-            <h2>Features</h2>
-            <ul>
-                <li>- Create and manage your shopping items with ease.</li>
-                <li>- Organize your items into categories for better organization.</li>
-                <li>- Set due dates and mark items as urgent when needed.</li>
-                <li>- Customize your profile and account settings.</li>
-                <li>- Admin users can manage categories.</li>
-            </ul>
-        </span>
+<section id="home" class="main-page">
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h1 class="center-align lime-text text-darken-2">Welcome to ShopMaster!</h1>
+        <p class="flow-text">ShopMaster is your ultimate shopping companion that makes managing your shopping lists and items a breeze.</p>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="row">
-    <div class="col s12 m12">
-      <div class="card-panel teal prefix white-text lime  darken-2">
-        <span class="white-text">
-            <h2>Getting Started</h2>
-            <ul>
-                <li>- Register an account or log in if you already have one.</li>
-                <li>- Create new shopping items and categorize them.</li>
-                <li>- View and manage your items in your profile.</li>
-                <li>- Make use of the search functionality to quickly find items.</li>
-                <li>- Customize your account settings and update your information.</li>
-            </ul>
-        </span>
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel white-text lime darken-2">
+          <div class="card-content white-text">
+            <span class="card-title">What is ShopMaster?</span>
+            <p>ShopMaster is your all-in-one solution for organizing and simplifying your shopping experience. Whether you're creating a grocery list, shopping for essentials, or tracking items you need to purchase, ShopMaster has you covered.</p>
+            <p>With intuitive features designed to enhance your shopping journey, ShopMaster helps you stay organized, save time, and make your shopping trips more efficient.</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-<div class="row">
-    <div class="col s12 m12">
-      <div class="card-panel teal prefix white-text lime  darken-2">
-        <span class="white-text">
-            <h2>Ready to Get Started?</h2>
-            <a href="{{ url_for('login') }}" class="btn prefix orange darken-2 center-align">Log In</a>
-            <a href="{{ url_for('register') }}" class="btn prefix purple darken-2 center-align">Register</a>
-        </span>
-    </div>
-  </div>
-</div>
 
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel white-text lime darken-2">
+          <div class="card-content white-text">
+            <span class="card-title">Why Choose ShopMaster?</span>
+            <p>ShopMaster offers a range of benefits to make your shopping experience enjoyable and hassle-free:</p>
+            <ul>
+              <li>Effortlessly create and manage shopping lists.</li>
+              <li>Categorize items for easy organization.</li>
+              <li>Set due dates and prioritize urgent items.</li>
+              <li>Access your lists anytime, anywhere, on any device.</li>
+              <li>Streamline your shopping trips and avoid forgetting essential items.</li>
+            </ul>
+            <p>Experience the convenience and efficiency of ShopMaster for a stress-free shopping experience.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel white-text lime darken-2">
+          <div class="card-content white-text">
+            <span class="card-title">Get Started Today!</span>
+            <p>Ready to take control of your shopping lists and make shopping a breeze? Join ShopMaster today and enjoy the benefits of an organized shopping experience.</p>
+            <a href="{{ url_for('register') }}" class="btn purple darken-2">Register</a>
+            <a href="{{ url_for('login') }}" class="btn orange darken-2">Log In</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

@@ -10,8 +10,8 @@
     {% endblock %}
     <title>ShopMaster</title>
 </head>
-<body>
-    <header>
+<body style="background-image: url('/static/images/bg.png'); background-size: cover; background-repeat: no-repeat;">
+  <header>
         <nav class="nav-extended lime darken-2">
             <div class="nav-wrapper">
               <a href="{{ url_for('get_items') }}" class="brand-logo">
@@ -40,7 +40,7 @@
         <!--mobile-->
           <ul class="sidenav" id="mobile-demo">
             
-            <li><h4 class="center-align white-text lime darken-2">
+            <li><h4 class="center-align lime-text lime darken-2">
                 <i class="material-icons prefix white-text  darken-2">local_mall</i>ShopMaster</h4></li>
                 {% if not session.user %}
                 <li><a href="{{ url_for('main_page') }}">About</a></li>  
@@ -68,7 +68,7 @@
                 {% if messages %}
                     {% for message in messages %}
                         <div class="row flashes">
-                            <h4 class="center-align white lime darken-2">{{ message }}</h4>
+                            <h4 class="center-align prefix lime-text darken-2">{{ message }}</h4>
                         </div>
                     {% endfor %}
                 {% endif %}

@@ -18,15 +18,17 @@
                 <span class="card-title">Profile Page</span>
                 <p>Here's a brief overview of what you can do on your profile page:</p>
                 <ul>
-                  <li>Perform/Select various account actions:</li>
-                  <ul>
-                    <li>-Renew your username.</li>
-                    <li>-Change your password.</li>
-                    <li>-Update your email.</li>
-                  </ul>
-                  <li>-Start a new list by clicking "Start New List."</li>
-                  <li>-Delete your account:</li>
+                  <li>Perform/Select various account actions:
+                    <ol>
+                      <li>Renew your username.</li>
+                      <li>Change your password.</li>
+                      <li>Update your email.</li>
+                    </ol>
+                  </li>
+                  <li>Start a new list by clicking "Start New List."</li>
+                  <li>Delete account option at the bottom of the page.</li>
                 </ul>
+                
                 <p>If you need further assistance, don't hesitate to reach out.</p>
                 
                 <button onclick="window.location.href='{{ url_for('contact_developer') }}'" class="btn-small prefix orange-text white darken-4">
@@ -71,7 +73,7 @@
         </button>
       </form>
     </div>
-      <div class="right-align">
+      <div class="center-align">
         <p class="orange-text darken-4">To delete your account please click here:
         <a class="prefix red-text darken-2" href="{{ url_for('delete_account_confirm') }}">Account Deletion
         </a></p>
